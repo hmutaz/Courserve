@@ -1,0 +1,9 @@
+Can confirm, just had the same error.
+Tried installing @prisma/client manually, it seems to help. So here is a possible workaround until the problem is fixed.
+
+Delete node_modules
+Run npm install
+Run npm install @prisma/client
+Run npx prisma generate / npm prisma migrate dev
+
+https://youtu.be/1SjqRn_Ira4?si=o1Ay9Lm3bOA4q2aV&t=3450ri
