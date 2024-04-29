@@ -1,32 +1,40 @@
-import React from 'react';
-import Link from 'next/link';
-import Button from './Button';
+import React from "react";
+import Link from "next/link";
+import Button from "./Button";
+import NavbarLink from "./NavbarLink";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-    return (
-        <>
-            <ul className='bg-gradient-to-r from-[#315DC1] to-[#45C99B] flex justify-between px-[42px] py-5 items-center'>
-                <div>
-                    <Link className='text-[42px] font-extrabold' href="/">
-                        Courserve
-                    </Link>
-                </div>
-                <div className='flex gap-10 items-center'>
-                    <Link href="/dashboard">
-                        <li>Dashboard</li>
-                    </Link>
-                    <div className='flex gap-2 items-center'>
-                        <Button classes='px-4 bg-[#E4E4E4] text-[#1F1F1F] text-lg rounded-l-[50px] rounded-r-[5px]'>
-                            Login
-                        </Button>
-                        <Button classes='px-4 bg-[#315DC1] text-[#E4E4E4] text-lg rounded-r-[50px] rounded-l-[5px]'>
-                            Register
-                        </Button>
-                    </div>
-                </div>                
-            </ul>
-        </>
-    );
+  return (
+    <>
+      <div className="bg-white shadow-md flex justify-between px-[42px] py-5 items-center">
+        <div className="flex gap-10 items-center">
+          <Link
+            className="text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#193E2D] to-[#F6E5AF]"
+            href="/"
+          >
+            Courserve
+          </Link>
+          <ul className="flex gap-10">
+            <li><NavbarLink href="/dashboard">Beranda</NavbarLink></li>
+            <li><NavbarLink href="/dashboard">Kursus</NavbarLink></li>
+            <li><NavbarLink href="/dashboard">Kontak</NavbarLink></li>
+          </ul>
+        </div>
+        <SearchBar/>
+        <div className="flex gap-10 items-center">
+          <div className="flex gap-2 items-center">
+            <Button classes="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-l-[50px] rounded-r-[5px]">
+              Masuk
+            </Button>
+            <Button classes="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-r-[50px] rounded-l-[5px]">
+              Daftar
+            </Button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Navbar;
