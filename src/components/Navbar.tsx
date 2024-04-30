@@ -21,13 +21,13 @@ const Navbar = () => {
             <li><NavbarLink href="/dashboard">Kontak</NavbarLink></li>
           </ul>
         </div>
-        <SearchBar/>
+        <SearchBar />
         <div className="flex gap-10 items-center">
-          <div className="flex gap-2 items-center">
-            <Button classes="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-l-[50px] rounded-r-[5px]">
+          <div className="flex gap-1 items-center">
+            <Button className="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-[10px]">
               Masuk
             </Button>
-            <Button classes="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-r-[50px] rounded-l-[5px]">
+            <Button className="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-[10px]">
               Daftar
             </Button>
           </div>

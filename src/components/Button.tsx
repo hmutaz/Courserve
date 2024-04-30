@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react"
 
 interface Props {
-    classes?: string;
+    className?: string;
     children: ReactNode;
 }
 
-const Button = ({ classes, children }: Props) => {
+const Button = ({ className: classes, children }: Props) => {
     return (
         <>
-            <button className={"p-2 " + classes}>{ children }</button>
+            <button className={"p-2 " + classes}>{children}</button>
         </>
     )
 }
