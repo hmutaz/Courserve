@@ -1,11 +1,18 @@
 import Button from "@/components/Button";
 import CourseCard from "@/components/CourseCard";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <div className="flex justify-center items-center p-36 gap-24">
+      <div className="flex md:flex-row flex-col justify-center items-center p-36 gap-24">
         <div className="relative">
           <Image
             src={"/home-page.png"}
@@ -29,7 +36,7 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col gap-8 max-w-md">
-          <h1 className="font-extrabold text-5xl">
+          <h1 className="font-extrabold text-left text-5xl">
             DAPATKAN SKILL ANDA DI SINI!!!
           </h1>
           <p className="text-xl leading-10">
@@ -41,8 +48,32 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <div className="flex justify-center bg-gradient-to-b from-white to-[#E4E4E4] w-full p-36">
-        <CourseCard />
+      <div className="flex justify-center bg-gradient-to-b from-white to-[#E4E4E4] w-full md:p-4 p-36">
+        <Carousel className="w-10/12 bg-transparent">
+          <CarouselContent>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center basis-1/2">
+                <CourseCard />
+            </CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+
       </div>
     </main>
   );

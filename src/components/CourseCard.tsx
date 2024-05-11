@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-const CourseCard = () => {
+const   CourseCard = () => {
   return (
-    <div className="relative flex flex-col text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl w-96 items-center">
-      <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl">
+    <div className="flex flex-col w-96 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl items-center">
+      <div className="mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl">
         <Image 
             src={"/course-card.png"}
             width={336}
