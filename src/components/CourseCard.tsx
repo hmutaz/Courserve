@@ -1,9 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
-const   CourseCard = () => {
+interface Props {
+  className?: string;
+}
+
+const CourseCard = ({className}: Props) => {
   return (
-    <div className="flex flex-col w-96 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl items-center">
+    <div className={"flex flex-col w-96 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl items-center "+className}>
       <div className="mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl">
         <Image 
             src={"/course-card.png"}
