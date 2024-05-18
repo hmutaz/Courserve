@@ -36,11 +36,7 @@ const Course = () => {
                     <p className="text-[14px] leading-10 text-white">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequuntur, fuga perspiciatis quae blanditiis aliquid alias vitae debitis nam quam labore quidem excepturi, dolore repellendus in tempore consequatur vel error.
                     </p>
-                    <span className='flex items-center gap-4 text-white text-xs leading-10'>
-                        <Users />
-                        X Pelajar
-                    </span>
-                    <div className="text-white px-8 flex gap-2 mt-8">
+                    <div className="text-white flex gap-2 mt-3">
                             <Rating />
                             <p className="text-xs mr-6">4 (1.345 ulasan)</p>
                             <Image 
@@ -49,7 +45,7 @@ const Course = () => {
                                 height={23}
                                 alt="People Icon"
                             />
-                            <p className="text-xs">8.2k pelajar</p>
+                            <p className="text-xs">x pelajar</p>
                     </div>
                 </div>
                 <div className='flex justify-center relative'>
