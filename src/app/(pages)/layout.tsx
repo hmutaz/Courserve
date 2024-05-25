@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { auth } from "../../auth";
+import { auth } from "../../../auth";
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
-import "./globals.css";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +19,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-
+  
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body className={inter.className}>
-          <Toaster />
-          {children}
-        </body>
-      </html>
-    </SessionProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <SessionProvider session={session}>
+          <div className="mx-auto text-2xl gap-2 mb-10">
+            <Toaster/>
+            <Navbar/>
+            {children}
+          </div>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }
