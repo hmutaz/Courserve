@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import CustomButton from "@/components/ui/custom-button";
 import CourseCard from "@/components/CourseCard";
 import Image from "next/image";
 import {
@@ -43,31 +43,31 @@ export default function Home() {
             Dengan Courserve Anda bisa mendapatkan lebih dari 10 keterampilan
             yang Anda inginkan dan bersiap untuk wawancara kerja berikutnya!
           </p>
-          <Button className="text-xl leading-10 bg-[#536F3E] text-white rounded-[10px] w-[55%]">
+          <CustomButton className="text-xl leading-10 bg-[#536F3E] text-white rounded-[10px] w-[55%]">
             Dapatkan Kursus
-          </Button>
+          </CustomButton>
         </div>
       </div>
       <div className="flex justify-center bg-gradient-to-b from-white to-[#E4E4E4] w-full md:p-4 p-36">
         <Carousel className="w-10/12 bg-transparent">
           <CarouselContent>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
             <CarouselItem className="flex justify-center basis-1/2">
-                <CourseCard />
+              <CourseCard />
             </CarouselItem>
           </CarouselContent>
           <CarouselPrevious />

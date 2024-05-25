@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Button from "./Button";
+import CustomButton from "./ui/custom-button";
 import NavbarLink from "./NavbarLink";
 import SearchBar from "./SearchBar";
 
@@ -24,12 +24,12 @@ const Navbar = () => {
         <SearchBar />
         <div className="flex gap-10 items-center">
           <div className="flex gap-1 items-center">
-            <Button className="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-[10px]">
+            <CustomButton className="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-[10px]">
               Masuk
-            </Button>
-            <Button className="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-[10px]">
+            </CustomButton>
+            <CustomButton className="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-[10px]">
               Daftar
-            </Button>
+            </CustomButton>
           </div>
         </div>
       </div>
