@@ -2,15 +2,11 @@
 
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-<<<<<<< HEAD
 import {
   CheckIcon,
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons"
-=======
-import { Check, ChevronRight, Circle } from "lucide-react"
->>>>>>> catalog-page
 
 import { cn } from "@/lib/utils"
 
@@ -42,11 +38,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-<<<<<<< HEAD
     <ChevronRightIcon className="ml-auto h-4 w-4" />
-=======
-    <ChevronRight className="ml-auto h-4 w-4" />
->>>>>>> catalog-page
   </DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
@@ -77,12 +69,8 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-<<<<<<< HEAD
         "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-=======
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
->>>>>>> catalog-page
         className
       )}
       {...props}
@@ -124,11 +112,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-<<<<<<< HEAD
         <CheckIcon className="h-4 w-4" />
-=======
-        <Check className="h-4 w-4" />
->>>>>>> catalog-page
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -151,11 +135,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-<<<<<<< HEAD
         <DotFilledIcon className="h-4 w-4 fill-current" />
-=======
-        <Circle className="h-2 w-2 fill-current" />
->>>>>>> catalog-page
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

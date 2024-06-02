@@ -15,8 +15,7 @@ import {
     Users,
     ListFilter
 } from "lucide-react"
-
-import Button from "@/components/Button"
+import Button from "@/components/ui/custom-button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -32,8 +31,27 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import CourseCard from "@/components/CourseCard"
+import { useEffect, useState } from "react"
 
-const Catalog = () => {
+interface Course {
+    id: string
+    image: string
+    title: string
+    description: string
+}
+
+const handleClick = (id: string) => {
+}
+
+async function getCourses() {
+    const res = await fetch('http://localhost:3000/api/courses')
+    const test = await res.json()
+    return test
+}
+
+const Course = async () => {
+    const courses = await getCourses()
+
     return (
         <>
             <div className="flex flex-col mx-32 my-16 gap-8">
@@ -41,7 +59,7 @@ const Catalog = () => {
                     <p className="text-xl leading-10">Ditemukan X Kursus</p>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button className="flex items-center gap-2 text-xl leading-10 py-0 px-6 border border-black rounded-[10px]">                                
+                            <Button className="flex items-center gap-2 text-xl leading-10 py-0 px-6 border border-black rounded-[10px]">
                                 <ListFilter className="" />
                                 Semua
                             </Button>
@@ -129,15 +147,20 @@ const Catalog = () => {
                     </DropdownMenu>
                 </div>
                 <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 flex-col gap-x-8 gap-y-4 justify-between">
-                    <CourseCard className="w-72"/>
-                    <CourseCard className="w-72"/>
-                    <CourseCard className="w-72"/>
-                    <CourseCard className="w-72"/>
-                    <CourseCard className="w-72"/>
+                    {
+                        courses.map((course: Course) => (
+                            <CourseCard
+                                className="w-[288px]"
+                                image={'/course-card.png'}
+                                title={course.title}
+                                description={course.description}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         </>
     )
 }
 
-export default Catalog
+export default Course
