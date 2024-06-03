@@ -5,7 +5,7 @@ interface Props {
     children: ReactNode;
 }
 
-const Button = ({ className: classes, children }: Props) => {
+const CustomButton = ({ className: classes, children }: Props) => {
     return (
         <>
             <button className={"p-2 " + classes}>{children}</button>
@@ -13,4 +13,4 @@ const Button = ({ className: classes, children }: Props) => {
     )
 }
 
-export default Button;
+export default CustomButton;
