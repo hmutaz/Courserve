@@ -1,6 +1,8 @@
+"use client";
 import CustomButton from "@/components/ui/custom-button";
 import CourseCard from "@/components/CourseCard";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -43,9 +45,7 @@ export default function Home() {
             Dengan Courserve Anda bisa mendapatkan lebih dari 10 keterampilan
             yang Anda inginkan dan bersiap untuk wawancara kerja berikutnya!
           </p>
-          <CustomButton className="text-xl leading-10 bg-[#536F3E] text-white rounded-[10px] w-[55%]">
-            Dapatkan Kursus
-          </CustomButton>
+          <Link rel="stylesheet" href="/courses"><CustomButton className="text-xl leading-10 bg-[#536F3E] text-white rounded-[10px] w-[55%]">Dapatkan Kursus</CustomButton></Link>
         </div>
       </div>
       <div className="flex justify-center bg-gradient-to-b from-white to-[#E4E4E4] w-full md:p-4 p-36">

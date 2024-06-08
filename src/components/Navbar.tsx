@@ -24,12 +24,8 @@ const Navbar = () => {
         <SearchBar />
         <div className="flex gap-10 items-center">
           <div className="flex gap-1 items-center">
-            <CustomButton className="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-[10px]">
-              Masuk
-            </CustomButton>
-            <CustomButton className="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-[10px]">
-              Daftar
-            </CustomButton>
+            <Link href="/auth/login"><CustomButton className="px-6 bg-[#E4E4E4] text-[#000E23] text-lg rounded-[10px]">Masuk</CustomButton></Link>
+            <Link href="/auth/register"><CustomButton className="px-6 bg-[#536F3E] text-[#E4E4E4] text-lg rounded-[10px]">Daftar</CustomButton></Link>
           </div>
         </div>
       </div>

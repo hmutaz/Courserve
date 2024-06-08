@@ -25,6 +25,7 @@ export default async function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <Toaster />
+          <Navbar />
           {children}
         </body>
       </html>
