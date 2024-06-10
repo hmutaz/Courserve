@@ -1,98 +1,168 @@
-import Image from "next/image";
-import Button from "@/components/ui/custom-button";
-import Review from "@/components/Review";
-import Rating from "@/components/Rating";
 import {
+    Cloud,
+    CreditCard,
+    Github,
+    Keyboard,
+    LifeBuoy,
+    LogOut,
+    Mail,
+    MessageSquare,
+    Plus,
+    PlusCircle,
+    Settings,
+    User,
+    UserPlus,
     Users,
-    ShoppingCart
-} from 'lucide-react'
+    ListFilter
+} from "lucide-react"
+import Button from "@/components/ui/custom-button"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import CourseCard from "@/components/CourseCard"
+import Link from "next/link"
+import { validate } from "uuid"
 
-const Course = () => {
-    const headerStyle = {
-        backgroundImage: 'linear-gradient(to right, #000E23, #536F3E)',
-        color: 'white',
-        font: 'sans',
-        padding: '50px 80px',
-        margin: '0px 0px 30px 0px'
-    };
+interface Course {
+    id: string
+    image: string
+    title: string
+    description: string
+}
+
+async function getCourses() {
+    const res = await fetch('http://localhost:3000/api/courses', {
+        next: {
+            revalidate: 0
+        }
+    })
+    const test = await res.json()
+    return test
+}
+
+const Course = async () => {
+    const courses = await getCourses()
 
     return (
         <>
-            <div>
-
-                <div className='grid grid-cols-2 p-20 px-40 bg-gradient-to-r from-[#000E23] to-[#536F3E]'>
-                    <div className="flex flex-col gap-5">
-                        <h2 className="text-base leading-10 font-bold text-white">
-                            Organization
-                        </h2>
-                        <h1 className="text-4xl leading-10 font-extrabold text-white relative">
-                            <Image
-                                className='absolute -left-10'
-                                src={"/course-line.svg"}
-                                width={12}
-                                height={40}
-                                alt="Line Decor"
-                            />
-                            Course Name
-                        </h1>
-                        <p className="text-[14px] leading-10 text-white">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequuntur, fuga perspiciatis quae blanditiis aliquid alias vitae debitis nam quam labore quidem excepturi, dolore repellendus in tempore consequatur vel error.
-                        </p>
-                        <div className="text-white flex gap-2 mt-3">
-                            <Rating />
-                            <p className="text-xs mr-6">4 (1.345 ulasan)</p>
-                            <Image
-                                src={"/people.svg"}
-                                width={20}
-                                height={23}
-                                alt="People Icon"
-                            />
-                            <p className="text-xs">x pelajar</p>
-                        </div>
-                    </div>
-                    <div className='flex justify-center relative'>
-                        <div className="flex flex-col w-min text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl items-center absolute">
-                            <div className="w-[390px] mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl">
-                                <Image
-                                    src={"/course-card.png"}
-                                    width={390}
-                                    height={244}
-                                    alt="Course Image"
-                                />
-                            </div>
-                            <div className="flex flex-col p-6 gap-6 text-left w-full">
-                                <p className="block my-4 text-center text-[30px] font-bold leading-10">
-                                    Rp. XXX.XXX
-                                </p>
-                                <Button className='flex p-2 gap-4 rounded-[10px] items-center justify-center bg-black text-white'>
-                                    <ShoppingCart />
-                                    Beli Sekarang
-                                </Button>
-                                <h4 className="block font-sans text-base font-bold leading-5 tracking-normal">
-                                    X Bulan Y Minggu
-                                </h4>
-                                <h4 className="block font-sans text-base font-bold leading-5 tracking-normal">
-                                    Dibawakan dalam Bahasa Indonesia
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
+            <div className="flex flex-col mx-32 my-16 gap-8">
+                <div className="flex items-center justify-between">
+                    <p className="text-xl leading-10">Ditemukan {courses.length} Kursus</p>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button className="flex items-center gap-2 text-xl leading-10 py-0 px-6 border border-black rounded-[10px]">
+                                <ListFilter className="" />
+                                Semua
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuGroup>
+                                <DropdownMenuItem>
+                                    <User className="mr-2 h-4 w-4" />
+                                    <span>Profile</span>
+                                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <CreditCard className="mr-2 h-4 w-4" />
+                                    <span>Billing</span>
+                                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Settings className="mr-2 h-4 w-4" />
+                                    <span>Settings</span>
+                                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Keyboard className="mr-2 h-4 w-4" />
+                                    <span>Keyboard shortcuts</span>
+                                    <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                            </DropdownMenuGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuGroup>
+                                <DropdownMenuItem>
+                                    <Users className="mr-2 h-4 w-4" />
+                                    <span>Team</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuSub>
+                                    <DropdownMenuSubTrigger>
+                                        <UserPlus className="mr-2 h-4 w-4" />
+                                        <span>Invite users</span>
+                                    </DropdownMenuSubTrigger>
+                                    <DropdownMenuPortal>
+                                        <DropdownMenuSubContent>
+                                            <DropdownMenuItem>
+                                                <Mail className="mr-2 h-4 w-4" />
+                                                <span>Email</span>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem>
+                                                <MessageSquare className="mr-2 h-4 w-4" />
+                                                <span>Message</span>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuSeparator />
+                                            <DropdownMenuItem>
+                                                <PlusCircle className="mr-2 h-4 w-4" />
+                                                <span>More...</span>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuSubContent>
+                                    </DropdownMenuPortal>
+                                </DropdownMenuSub>
+                                <DropdownMenuItem>
+                                    <Plus className="mr-2 h-4 w-4" />
+                                    <span>New Team</span>
+                                    <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                            </DropdownMenuGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>
+                                <Github className="mr-2 h-4 w-4" />
+                                <span>GitHub</span>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                                <LifeBuoy className="mr-2 h-4 w-4" />
+                                <span>Support</span>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem disabled>
+                                <Cloud className="mr-2 h-4 w-4" />
+                                <span>API</span>
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>
+                                <LogOut className="mr-2 h-4 w-4" />
+                                <span>Log out</span>
+                                <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
-                <div className="grid grid-cols-2">
-                    <div className="mt-10 p-10 ml-32">
-                        <div>
-                            <h2 className="text-lg font-bold">Ulasan:</h2>
-                            <div className="flex-auto">
-                                <Review />
-                                <Review />
-                                <Review />
-                                <Review />
-                            </div>
-                        </div>
-                    </div>
+                <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 flex-col gap-x-8 gap-y-4 justify-between">
+                    {
+                        courses.map((course: Course) => (
+                            <Link key={course.id} href={'/course/' + course.id}>
+                                <CourseCard
+                                    className="w-[300px] h-full"
+                                    image={'/course-card.png'}
+                                    title={course.title}
+                                    description={course.description}
+                                />
+                            </Link>
+                        ))
+                    }
                 </div>
             </div>
-
         </>
     )
 }
