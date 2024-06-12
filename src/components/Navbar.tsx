@@ -16,9 +16,9 @@ const Navbar = () => {
             Courserve
           </Link>
           <ul className="flex gap-10">
-            <li><NavbarLink href="/dashboard">Beranda</NavbarLink></li>
-            <li><NavbarLink href="/dashboard">Kursus</NavbarLink></li>
-            <li><NavbarLink href="/dashboard">Kontak</NavbarLink></li>
+            <li><NavbarLink href="/">Beranda</NavbarLink></li>
+            <li><NavbarLink href="/courses">Kursus</NavbarLink></li>
+            <li><NavbarLink href="/about">Tentang</NavbarLink></li>
           </ul>
         </div>
         <SearchBar />
