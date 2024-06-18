@@ -31,7 +31,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import CourseCard from "@/components/CourseCard"
-import { useEffect, useState } from "react"
+import Link from "next/link"
+import { validate } from "uuid"
 
 interface Course {
     id: string
@@ -40,11 +41,12 @@ interface Course {
     description: string
 }
 
-const handleClick = (id: string) => {
-}
-
 async function getCourses() {
-    const res = await fetch('http://localhost:3000/api/courses')
+    const res = await fetch('http://localhost:3000/api/courses', {
+        next: {
+            revalidate: 0
+        }
+    })
     const test = await res.json()
     return test
 }
@@ -56,8 +58,8 @@ const Course = async () => {
         <>
             <div className="flex flex-col mx-32 my-16 gap-8">
                 <div className="flex items-center justify-between">
-                    <p className="text-xl leading-10">Ditemukan X Kursus</p>
-                    <DropdownMenu>
+                    <p className="text-xl leading-10">Ditemukan {courses.length} Kursus</p>
+                    {/* <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button className="flex items-center gap-2 text-xl leading-10 py-0 px-6 border border-black rounded-[10px]">
                                 <ListFilter className="" />
@@ -144,17 +146,19 @@ const Course = async () => {
                                 <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                 </div>
                 <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 flex-col gap-x-8 gap-y-4 justify-between">
                     {
                         courses.map((course: Course) => (
-                            <CourseCard
-                                className="w-[288px]"
-                                image={'/course-card.png'}
-                                title={course.title}
-                                description={course.description}
-                            />
+                            <Link key={course.id} href={'/course/' + course.id}>
+                                <CourseCard
+                                    className="w-[300px] h-full"
+                                    image={course.image}
+                                    title={course.title}
+                                    description={course.description}
+                                />
+                            </Link>
                         ))
                     }
                 </div>

@@ -8,15 +8,16 @@ interface CourseDetails {
     description: string;
     slug: string;
     image: string;
+    price: number;
 }
 
 const POST = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const courseDetails: CourseDetails = await req.json();
 
@@ -57,13 +58,13 @@ const GET = async (req: Request): Promise<Response> => {
 
 const PUT = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
-        const { id, title, description, slug, image }: CourseDetails & { id: string } = await req.json();
+        const { id, title, description, slug, image, price }: CourseDetails & { id: string } = await req.json();
 
         if (!id) {
             return new NextResponse(JSON.stringify({ error: 'Course ID is required' }), { status: 400 });
@@ -71,7 +72,7 @@ const PUT = async (req: Request): Promise<Response> => {
 
         const updatedCourse = await db.courses.update({
             where: { id },
-            data: { title, description, slug, image },
+            data: { title, description, slug, image, price },
         });
 
         return new NextResponse(JSON.stringify({ message: 'Post updated successfully', course: updatedCourse }), { status: 200 });

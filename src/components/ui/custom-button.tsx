@@ -8,7 +8,7 @@ interface Props {
 const CustomButton = ({ className: classes, children }: Props) => {
     return (
         <>
-            <button className={"p-2 " + classes}>{children}</button>
+            <button className={"p-2 hover:scale-105 duration-100 " + classes}>{children}</button>
         </>
     )
 }
