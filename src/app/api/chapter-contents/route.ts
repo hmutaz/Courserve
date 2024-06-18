@@ -43,11 +43,11 @@ const POST = async (req: Request): Promise<Response> => {
 
 const GET = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role == null) {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role == null) {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const { searchParams } = new URL(req.url);
         const id = searchParams.get('id');

@@ -6,6 +6,7 @@
 export const publicRoutes: string[] = [
     "/",
     "/home",
+    "/about",
     "/course",
     "/auth/new-verification"
 ];

@@ -1,4 +1,3 @@
-"use client";
 import CustomButton from "@/components/ui/custom-button";
 import CourseCard from "@/components/CourseCard";
 import Image from "next/image";
@@ -11,9 +10,29 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-export default function Home() {
+interface Course {
+  id: string
+  image: string
+  title: string
+  description: string
+}
+
+async function getCourses() {
+  const res = await fetch('http://localhost:3000/api/courses', {
+    next: {
+      revalidate: 0
+    }
+  })
+  const test = await res.json()
+  return test
+}
+
+export default async function Home() {
+  let courses = await getCourses()
+  courses = courses.slice(0, 6)
+
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="flex md:flex-row flex-col justify-center items-center p-36 gap-24">
         <div className="relative">
           <Image
@@ -49,17 +68,31 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center bg-gradient-to-b from-white to-[#E4E4E4] w-full md:p-4 p-36">
-        <Carousel className="w-10/12 bg-transparent">
-          <CarouselContent>
-            {/* <CarouselItem className="flex justify-center basis-1/2">
-              <CourseCard />
-            </CarouselItem> */}
+        <Carousel className="bg-transparent w-8/12"
+          opts={{
+            align: "start",
+          }}>
+          <CarouselContent className="p-4">
+            {
+              courses.map((course: Course) => (
+                <CarouselItem key={course.id} className="flex justify-center basis-1/2">
+                  <Link href={"/course/" + course.id}>
+                    <CourseCard
+                      className=" h-full"
+                      image={course.image}
+                      title={course.title}
+                      description={course.description}
+                    />
+                  </Link>
+                </CarouselItem>
+              ))
+            }
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
 
       </div>
-    </main>
+    </div>
   );
 }

@@ -31,7 +31,7 @@ const Navbar = (props: Props) => {
             <li><NavbarLink href="/about">Tentang</NavbarLink></li>
           </ul>
         </div>
-        <SearchBar />
+        {/* <SearchBar /> */}
         <div className="flex gap-10 items-center">
           <div className="flex gap-1 items-center">
             {

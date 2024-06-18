@@ -75,7 +75,7 @@ const Course = async ({ params }: { params: { id: string } }) => {
                             <p className="text-xs">x pelajar</p>
                         </div> */}
                     </div>
-                    <div className='flex justify-center relative'>
+                    <div className='flex justify-end relative'>
                         <div className="flex flex-col w-min text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl items-center absolute">
                             <div className="w-[390px] mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg bg-clip-border rounded-xl">
                                 <Image
@@ -107,7 +107,7 @@ const Course = async ({ params }: { params: { id: string } }) => {
                                 }
                                 {
                                     isPaid.isPaid &&
-                                    <Link href='/' className="flex">
+                                    <Link href={'/chapters?id=' + course.id} className="flex">
                                         <Button className='w-full p-2 gap-4 rounded-[10px] items-center bg-[#536F3E] text-[#E4E4E4]'>
                                             Buka Kursus
                                         </Button>

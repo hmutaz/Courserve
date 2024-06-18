@@ -10,11 +10,11 @@ interface ChapterDetails {
 
 const POST = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         // get course id from query params
         const { searchParams } = new URL(req.url);
@@ -44,11 +44,11 @@ const POST = async (req: Request): Promise<Response> => {
 
 const GET = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role == null) {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role == null) {
+        //     return new NextResponse(null, { status: 403 });
+        // }
         
         const { searchParams } = new URL(req.url);
         const id = searchParams.get('id');
@@ -60,7 +60,7 @@ const GET = async (req: Request): Promise<Response> => {
             return new NextResponse(JSON.stringify(chapters), { status: 200 });
         }
 
-        const chapter = await db.chapters.findUnique({ where: { id } });
+        const chapter = await db.chapters.findMany({ where: { courseId: id }});
 
         if (!chapter) {
             return new NextResponse(JSON.stringify({ error: 'Chapter Details not found' }), { status: 404 });
@@ -75,11 +75,11 @@ const GET = async (req: Request): Promise<Response> => {
 
 const PUT = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const { id, title, summary }: ChapterDetails & { id: string } = await req.json();
 
@@ -101,11 +101,11 @@ const PUT = async (req: Request): Promise<Response> => {
 
 const DELETE = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const { searchParams } = new URL(req.url);
         const id = searchParams.get('id');
