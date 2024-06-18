@@ -36,7 +36,6 @@ const Course = async ({ params, searchParams }: {
     const id = searchParams?.id as string
     const course = await getCourse(id)
     const chapters = await getChapters(id)
-    console.log(chapters)
 
     return (
         <>
@@ -45,10 +44,12 @@ const Course = async ({ params, searchParams }: {
                     <div className="flex flex-col gap-5 col-span-2 items-center">
                         {
                             chapters.map((chapter: Chapter) => (
-                                <Button className='border border-[#A6A6A6] text-left p-4 rounded-[10px] w-[90%] flex gap-4' key={chapter.id}>
-                                    <span className="font-bold ">{chapter.title} </span>
-                                    <span className="text-ellipsis line-clamp-1 text-[#A6A6A6]">{chapter.summary}</span>
-                                </Button>
+                                <Link href={'/chapter/' + chapter.id}  key={chapter.id} className=" text-left w-[90%]">
+                                    <Button className='border border-[#A6A6A6] rounded-[10px] flex gap-4 p-4 w-full'>
+                                        <span className="font-bold ">{chapter.title} </span>
+                                        <span className="text-ellipsis line-clamp-1 text-[#A6A6A6]">{chapter.summary}</span>
+                                    </Button>
+                                </Link>
                             ))
                         }
                     </div>

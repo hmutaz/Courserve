@@ -107,7 +107,7 @@ const Course = async ({ params }: { params: { id: string } }) => {
                                 }
                                 {
                                     isPaid.isPaid &&
-                                    <Link href={'/chapters?id=' + course.id} className="flex">
+                                    <Link href={'/chapter?id=' + course.id} className="flex">
                                         <Button className='w-full p-2 gap-4 rounded-[10px] items-center bg-[#536F3E] text-[#E4E4E4]'>
                                             Buka Kursus
                                         </Button>

@@ -10,11 +10,11 @@ interface ChapterContentDetails {
 
 const POST = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const { searchParams } = new URL(req.url);
         const chapterId = searchParams.get('chapterId');
@@ -55,11 +55,11 @@ const GET = async (req: Request): Promise<Response> => {
         if (!id) {
             // return new NextResponse(JSON.stringify({ error: 'Course ID is required' }), { status: 400 });
             // return all
-            const chapters = await db.chapters.findMany();
+            const chapters = await db.chapterContents.findMany();
             return new NextResponse(JSON.stringify(chapters), { status: 200 });
         }
 
-        const chapter = await db.chapters.findUnique({ where: { id } });
+        const chapter = await db.chapterContents.findFirst({ where: { chapterId: id } });
 
         if (!chapter) {
             return new NextResponse(JSON.stringify({ error: 'Chapter Details not found' }), { status: 404 });
@@ -74,11 +74,11 @@ const GET = async (req: Request): Promise<Response> => {
 
 const PUT = async (req: Request): Promise<Response> => {
     try {
-        const role = await currentRole();
+        // const role = await currentRole();
 
-        if (role !== "ADMIN") {
-            return new NextResponse(null, { status: 403 });
-        }
+        // if (role !== "ADMIN") {
+        //     return new NextResponse(null, { status: 403 });
+        // }
 
         const { id, thumbnail, video_url }: ChapterContentDetails & { id: string } = await req.json();
 
