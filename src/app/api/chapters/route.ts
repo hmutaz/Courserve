@@ -50,8 +50,8 @@ const GET = async (req: Request): Promise<Response> => {
         //     return new NextResponse(null, { status: 403 });
         // }
         
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get('id');
+            const { searchParams } = new URL(req.url);
+            const id = searchParams.get('id');
 
         if (!id) {
             // return new NextResponse(JSON.stringify({ error: 'Course ID is required' }), { status: 400 });

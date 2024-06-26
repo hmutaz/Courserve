@@ -44,9 +44,8 @@ interface Course {
 
 async function getCourses() {
     const session = await auth()
-    console.log(session?.user.id)
 
-    const res = await fetch('http://localhost:3000/api/courses/details?id=664a01de82238d1397b1f501', {
+    const res = await fetch('http://localhost:3000/api/courses/details?id=' + session?.user.id, {
         next: {
             revalidate: 0
         }
